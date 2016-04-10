@@ -7,15 +7,19 @@ This Project is to represent the 2016 Irish general eclection using a Neo4j Data
 ## Database
 To Create the database I first found a CSV file with the candidates and their constituency and then shortened it down to just the information that I wanted to repersent in the database. I then entered all the information into the Database and had all the nodes created.
 To Create the Candidate
+
 ``Create (n:Person {name : "Gerry Adams", Gender : "Male", Party : "Sinn Fein", Constituency : "Louth"})``
 
 I then tried to create relationships between the nodes but could not get it to work I think due to the way I had set up my labels and properties for the nodes.
-``MATCH (a:Person {name : "Gerry Adams"}),(b:Constituency : "Louth") WHERE a.Persona = 'Node A' AND b.Constituency = 'Node B' CREATE (a)-[r:RELTYPE]->(b) RETURN r``
+`` MATCH (a:Person {name : "Gerry Adams"}),(b:Constituency : "Louth")
+    WHERE a.Person = 'Node A' AND b.Constituency = 'Node B'
+    CREATE (a)-[r:RELTYPE]->(b)
+    RETURN r ``
 
 ## Queries
 The queries for the database had the relationships worked are the following - Party with the most Female Canidiates, Constituency with the most Candidates and the Party with the least amount of Candidates. Without the Database fully complete I was unable to test these Queries.
 
-#### Query one title
+#### Party with most female Candidates
 This query retreives the party with the most Female Candidates
 ```cypher
 MATCH
@@ -25,7 +29,7 @@ RETURN
 	n.Party;
 ```
 
-#### Query two title
+#### Constituency with most Candidates
 This query retreives the Constituency with the most Candidates
 ```cypher
 MATCH
@@ -35,7 +39,7 @@ RETURN
 	n;
 ```
 
-#### Query three title
+#### Party with the least amount of Candidates
 This query retreives the Party with the least amout of Candidates
 ```cypher
 MATCH
